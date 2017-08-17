@@ -1,0 +1,1 @@
+package com.nxt.maven.guaguaheadlines.api;/** * Created by Jan Maven on 2017/8/14. * Email:cyjiang_11@163.com * Description: 网络地址常量 */public class ApiConstant {    /**接口根地址*/    public static final String BASE_SERVER_URL = "http://is.snssdk.com/";}

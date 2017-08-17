@@ -2,7 +2,6 @@ package com.nxt.maven.guaguaheadlines.guide;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -13,12 +12,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.nxt.maven.guaguaheadlines.R;
-import com.nxt.maven.guaguaheadlines.app.Constants;
+import com.nxt.maven.guaguaheadlines.app.Constant;
 import com.nxt.maven.guaguaheadlines.databinding.ActivityGuideBinding;
 import com.nxt.maven.guaguaheadlines.guide.adapter.ScenePagerAdapter;
 import com.nxt.maven.guaguaheadlines.guide.adapter.SceneTransformer;
 import com.nxt.maven.guaguaheadlines.guide.adapter.TextPagerAdapter;
 import com.nxt.maven.guaguaheadlines.home.MainActivity;
+import com.nxt.maven.guaguaheadlines.ui.MainActivity1;
 import com.nxt.maven.guaguaheadlines.utils.SharePrefHelper;
 
 import org.zackratos.ultimatebar.UltimateBar;
@@ -91,8 +91,9 @@ public class GuideActivity extends AppCompatActivity {
         binding.start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharePrefHelper.put(Constants.FIRST_IN,false);
-                startActivity(new Intent(GuideActivity.this, MainActivity.class));
+                SharePrefHelper.put(Constant.FIRST_IN,false);
+                startActivity(new Intent(GuideActivity.this, MainActivity1.class));
+//                startActivity(new Intent(GuideActivity.this, MainActivity.class));
                 Toast.makeText(getApplicationContext(), "Start clicked", Toast.LENGTH_SHORT).show();
                 finish();
             }

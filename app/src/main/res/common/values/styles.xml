@@ -1,0 +1,83 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.Translucent">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+    <!-- Button Item -->
+    <style name="AppButtonGreen">
+        <item name="android:background">@drawable/selector_btn_default_green</item>
+        <item name="android:textColor">@drawable/selector_btn_green_text</item>
+    </style>
+    
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="ClubToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+        <item name="titleTextAppearance">@style/ToolbarTextAppearance</item>
+        <item name="subtitleTextAppearance">@style/ToolbarSubTitleTextAppearance</item>
+        <!-- 设置该属性解决空白部分-->
+    </style>
+
+    <style name="ToolbarTextAppearance"
+           parent="@style/TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorPrimaryIcons</item>
+    </style>
+
+    <style name="ToolbarSubTitleTextAppearance"
+           parent="@style/TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+    </style>
+
+
+    <!--参考微影demo Ghost-->
+    <style name="both_match_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="container_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@mipmap/bg</item>
+    </style>
+
+    <style name="MenuStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:layout_marginRight">80dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- 自定义进度条 -->
+    <style name="StyleProgressBarMini" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">100dip</item>
+        <item name="android:minHeight">10dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
+        <item name="android:progressDrawable">@drawable/shape_progressbar_mini</item>
+    </style>
+</resources>
