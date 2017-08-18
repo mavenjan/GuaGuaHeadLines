@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--功能栏、天气-->
         <FrameLayout
             android:id="@+id/id_uc_news_header_pager"
             android:layout_width="match_parent"
@@ -187,6 +188,7 @@
             </LinearLayout>
         </FrameLayout>
 
+        <!--标题-->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/uc_news_header_title_height"
@@ -225,7 +227,7 @@
             app:layout_behavior="@string/behavior_uc_news_tab">
 
             <me.weyye.library.colortrackview.ColorTrackTabLayout
-                android:id="@+id/id_uc_news_tab"
+                android:id="@+id/tab_channel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
@@ -233,8 +235,7 @@
                 app:tabMode="scrollable"
                 app:tabSelectedTextColor="@color/tab_selected_color"
                 app:tabTextAppearance="@style/TextAppearanceHome"
-                app:tabTextColor="#ff222222"
-                app:layout_behavior="@string/behavior_uc_news_tab"/>
+                app:tabTextColor="#ff222222"/>
 
             <ImageView
                 android:id="@+id/iv_operation"
@@ -249,18 +250,8 @@
 
         </RelativeLayout>
 
-        <android.support.design.widget.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/uc_news_tabs_height"
-            android:background="@color/colorPrimary"
-            android:visibility="gone"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorPrimaryLight"
-            app:tabSelectedTextColor="@color/colorPrimaryLight"
-            app:tabTextColor="@color/colorPrimaryIcons"/>
-
         <android.support.v4.view.ViewPager
-            android:id="@+id/id_uc_news_content"
+            android:id="@+id/vp_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"

@@ -92,8 +92,8 @@ public class GuideActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharePrefHelper.put(Constant.FIRST_IN,false);
-                startActivity(new Intent(GuideActivity.this, MainActivity1.class));
-//                startActivity(new Intent(GuideActivity.this, MainActivity.class));
+//                startActivity(new Intent(GuideActivity.this, MainActivity1.class));
+                startActivity(new Intent(GuideActivity.this, MainActivity.class));
                 Toast.makeText(getApplicationContext(), "Start clicked", Toast.LENGTH_SHORT).show();
                 finish();
             }
