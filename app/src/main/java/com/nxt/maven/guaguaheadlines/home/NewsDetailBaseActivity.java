@@ -1,6 +1,7 @@
 package com.nxt.maven.guaguaheadlines.home;
 
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,7 +13,7 @@ import com.chaychan.uikit.powerfulrecyclerview.PowerfulRecyclerView;
 import com.github.nukc.stateview.StateView;
 import com.nxt.maven.guaguaheadlines.R;
 import com.nxt.maven.guaguaheadlines.app.Constant;
-import com.nxt.maven.guaguaheadlines.app.MBaseActivity;
+import com.nxt.maven.guaguaheadlines.base.MBaseActivity;
 import com.nxt.maven.guaguaheadlines.home.adapter.CommentAdapter;
 import com.nxt.maven.guaguaheadlines.home.presenter.NewsDetailPresenter;
 import com.nxt.maven.guaguaheadlines.home.view.NewsDetailHeaderView;
@@ -23,6 +24,7 @@ import com.nxt.maven.guaguaheadlines.utils.ListUtils;
 import com.nxt.maven.guaguaheadlines.view.NewsDetailView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.zackratos.ultimatebar.UltimateBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +84,8 @@ public abstract class NewsDetailBaseActivity extends MBaseActivity<NewsDetailPre
 
     @Override
     public void initView() {
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
         mStateView = StateView.inject(mFlContent);
         mStateView.setLoadingResource(R.layout.page_loading);
         mStateView.setRetryResource(R.layout.page_net_error);

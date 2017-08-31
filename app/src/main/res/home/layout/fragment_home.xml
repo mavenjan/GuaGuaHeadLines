@@ -44,7 +44,7 @@
             android:background="@mipmap/shadow_add_titlebar_new"
             android:paddingLeft="5dp"
             android:scaleType="center"
-            android:src="@mipmap/add_channel"
+            android:src="@drawable/ic_category_expand"
         />
 
     </RelativeLayout>

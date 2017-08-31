@@ -1,7 +1,9 @@
 package com.nxt.maven.guaguaheadlines.home.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -70,6 +72,7 @@ public class NewsAdapter extends BaseQuickAdapter<News, BaseViewHolder> {
      */
     public NewsAdapter(Context context, String channelCode, boolean isVideoList, List<News> data) {
         super(data);
+        Log.e(TAG, "NewsAdapter: data----------->" + data);
         mContext = context;
         mChannelCode = channelCode;
         this.isVideoList = isVideoList;
@@ -84,9 +87,9 @@ public class NewsAdapter extends BaseQuickAdapter<News, BaseViewHolder> {
 
                 if (news.has_video) {
                     //如果有视频
-                    if (news.video_style ==0) {
+                    if (news.video_style == 0) {
                         //右侧视频
-                        if (TextUtils.isEmpty(news.middle_image.url)){
+                        if (news.middle_image == null || TextUtils.isEmpty(news.middle_image.url)){
                             return TEXT_NEWS;
                         }
                         return RIGHT_PIC_VIDEO_NEWS;
@@ -129,7 +132,7 @@ public class NewsAdapter extends BaseQuickAdapter<News, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, News news) {
-        if (TextUtils.isEmpty(news.title)){
+        if (TextUtils.isEmpty(news.title)) {
             //如果没有标题，则直接跳过
             return;
         }
@@ -156,7 +159,8 @@ public class NewsAdapter extends BaseQuickAdapter<News, BaseViewHolder> {
                     GlideUtils.load(mContext, news.video_detail_info.detail_video_large_image.url, helper.getView(R.id.iv_img));//中间图片使用视频大图
                 } else {
                     helper.setVisible(R.id.iv_play, false);//隐藏播放按钮
-                    tvBottomRight.setCompoundDrawables(mContext.getResources().getDrawable(R.mipmap.icon_picture_group), null, null, null);//TextView增加左侧图标
+//                    tvBottomRight.setCompoundDrawables(mContext.getResources().getDrawable(R.mipmap.icon_picture_group), null, null, null);//TextView增加左侧图标
+                    tvBottomRight.setCompoundDrawables(ContextCompat.getDrawable(mContext,R.mipmap.icon_picture_group),null,null,null);//TextView增加左侧图标
                     helper.setText(R.id.tv_bottom_right, news.gallary_image_count + UIUtils.getString(R.string.img_unit));//设置时长
                     GlideUtils.load(mContext, news.image_list.get(0).url.replace("list/300x196", "large"), helper.getView(R.id.iv_img));//中间图片使用image_list第一张
                 }
@@ -212,13 +216,13 @@ public class NewsAdapter extends BaseQuickAdapter<News, BaseViewHolder> {
     }
 
     private void dealVideo(final BaseViewHolder helper, final News news) {
-        helper.setVisible(R.id.ll_title,true);//显示标题栏
+        helper.setVisible(R.id.ll_title, true);//显示标题栏
         helper.setText(R.id.tv_title, news.title);//设置标题
 
         String format = UIUtils.getString(R.string.video_play_count);
         int watchCount = news.video_detail_info.video_watch_count;
         String countUnit = "";
-        if (watchCount> 10000){
+        if (watchCount > 10000) {
             watchCount = watchCount / 10000;
             countUnit = "万";
         }
@@ -247,13 +251,13 @@ public class NewsAdapter extends BaseQuickAdapter<News, BaseViewHolder> {
             public void onVideoClickToStart() {
                 //点击播放
                 helper.setVisible(R.id.ll_duration, false);//隐藏时长
-                helper.setVisible(R.id.ll_title,false);//隐藏标题栏
+                helper.setVisible(R.id.ll_title, false);//隐藏标题栏
 //
                 VideoPathDecoder decoder = new VideoPathDecoder() {
                     @Override
                     public void onSuccess(String url) {
                         KLog.i("Video url:" + url);
-                        videoPlayer.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST,news.title);
+                        videoPlayer.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST, news.title);
                         videoPlayer.seekToInAdvance = news.video_detail_info.progress;
                         videoPlayer.startVideo();
                     }

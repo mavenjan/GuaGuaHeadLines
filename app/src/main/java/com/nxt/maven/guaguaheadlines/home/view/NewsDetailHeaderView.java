@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.nxt.maven.guaguaheadlines.R;
 import com.nxt.maven.guaguaheadlines.model.entity.NewsDetail;
+import com.nxt.maven.guaguaheadlines.relation.ShowPicRelation;
 import com.nxt.maven.guaguaheadlines.utils.DateUtils;
 import com.nxt.maven.guaguaheadlines.utils.GlideUtils;
 
@@ -27,6 +28,7 @@ import butterknife.ButterKnife;
 
 public class NewsDetailHeaderView extends FrameLayout {
 
+    private static final String NICK = "Maven Jan";
 
     @BindView(R.id.tvTitle)
     TextView mTvTitle;
@@ -67,7 +69,7 @@ public class NewsDetailHeaderView extends FrameLayout {
         ButterKnife.bind(this, this);
     }
 
-    public void setDetail(NewsDetail detail, LoadWebListener listener) {
+    public void setDetail(NewsDetail detail,LoadWebListener listener) {
         mWebListener = listener;
 
         mTvTitle.setText(detail.title);
@@ -86,6 +88,8 @@ public class NewsDetailHeaderView extends FrameLayout {
         if (TextUtils.isEmpty(detail.content))
             mWvContent.setVisibility(GONE);
 
+        mWvContent.getSettings().setJavaScriptEnabled(true);//设置JS可用
+        mWvContent.addJavascriptInterface(new ShowPicRelation(mContext),NICK);//绑定JS和Java的联系类，以及使用到的昵称
 
         String htmlPart1 = "<!DOCTYPE HTML html>\n" +
                 "<head><meta charset=\"utf-8\"/>\n" +
@@ -93,7 +97,7 @@ public class NewsDetailHeaderView extends FrameLayout {
                 "</head>\n" +
                 "<body>\n" +
                 "<style> \n" +
-                "img{max-width:100%!important;height:auto!important}\n" +
+                "img{width:100%!important;height:auto!important}\n" +
                 " </style>";
         String htmlPart2 = "</body></html>";
 
@@ -104,6 +108,7 @@ public class NewsDetailHeaderView extends FrameLayout {
         mWvContent.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageFinished(WebView view, String url) {
+                addJs(view);//添加多JS代码，为图片绑定点击函数
                 if (mWebListener != null){
                     mWebListener.onLoadFinished();
                 }
@@ -111,10 +116,26 @@ public class NewsDetailHeaderView extends FrameLayout {
         });
     }
 
+    /**添加JS代码，获取所有图片的链接以及为图片设置点击事件*/
+    private void addJs(WebView wv) {
+        wv.loadUrl("javascript:(function  pic(){"+
+                "var imgList = \"\";"+
+                "var imgs = document.getElementsByTagName(\"img\");"+
+                "for(var i=0;i<imgs.length;i++){"+
+                "var img = imgs[i];"+
+                "imgList = imgList + img.src +\";\";"+
+                "img.onclick = function(){"+
+                "window.chaychan.openImg(this.src);"+
+                "}"+
+                "}"+
+                "window.chaychan.getImgArray(imgList);"+
+                "})()");
+    }
+
     private LoadWebListener mWebListener;
 
     /**页面加载的回调*/
     public interface LoadWebListener{
-       void onLoadFinished();
+        void onLoadFinished();
     }
 }

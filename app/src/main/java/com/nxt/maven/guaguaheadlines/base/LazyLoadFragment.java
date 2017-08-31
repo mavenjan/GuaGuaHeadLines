@@ -18,8 +18,6 @@ import android.view.View;
  */
 public abstract class LazyLoadFragment extends Fragment {
 
-    private static final String TAG = LazyLoadFragment.class.getSimpleName();
-
     private boolean isFirstEnter = true;//是否是第一次进入,默认是
     private boolean isReuseView = true ;//是否进行复用，默认复用
     private boolean isFragmentVisible;

@@ -14,7 +14,6 @@ import android.widget.TextView;
 public class ColorTextView extends TextView implements ColorUiInterface {
 
     private int attr_drawable = -1;
-    private int attr_textAppearance = -1;
     private int attr_textColor = -1;
     private int attr_textLinkColor = -1;
 

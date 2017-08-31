@@ -12,7 +12,6 @@ import com.nxt.maven.guaguaheadlines.R;
 import com.nxt.maven.guaguaheadlines.home.view.NewsDetailHeaderView;
 import com.nxt.maven.guaguaheadlines.model.entity.NewsDetail;
 import com.nxt.maven.guaguaheadlines.utils.GlideUtils;
-import com.nxt.maven.guaguaheadlines.utils.UIUtils;
 import com.socks.library.KLog;
 
 import org.zackratos.ultimatebar.UltimateBar;
@@ -51,7 +50,7 @@ public class NewsDetailDetailActivity extends NewsDetailBaseActivity {
     public void initView() {
         super.initView();
         UltimateBar ultimateBar = new UltimateBar(this);
-        ultimateBar.setColorBarForDrawer(ContextCompat.getColor(this, R.color.status_bar_color));//设置状态栏的颜色为灰色
+        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));//设置状态栏的颜色为灰色
     }
 
     @Override

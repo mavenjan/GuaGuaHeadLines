@@ -13,9 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nxt.maven.guaguaheadlines.R;
-import com.nxt.maven.guaguaheadlines.app.MBaseActivity;
+import com.nxt.maven.guaguaheadlines.base.MBaseActivity;
 import com.nxt.maven.guaguaheadlines.base.BasePresenter;
-import com.nxt.maven.guaguaheadlines.utils.UIUtils;
 
 import org.zackratos.ultimatebar.UltimateBar;
 
@@ -56,7 +55,7 @@ public class WebViewActivity extends MBaseActivity {
     @Override
     public void initView() {
         UltimateBar ultimateBar = new UltimateBar(this);
-        ultimateBar.setColorBarForDrawer(ContextCompat.getColor(this, R.color.status_color_grey));
+        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
     @Override

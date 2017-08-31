@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import com.nxt.maven.guaguaheadlines.R;
 import com.nxt.maven.guaguaheadlines.home.view.NewsDetailHeaderView;
 import com.nxt.maven.guaguaheadlines.model.entity.NewsDetail;
-import com.nxt.maven.guaguaheadlines.utils.UIUtils;
 import com.nxt.maven.guaguaheadlines.utils.VideoPathDecoder;
 import com.socks.library.KLog;
 
@@ -38,14 +37,12 @@ public class VideoDetailActivity extends NewsDetailBaseActivity {
     private SensorManager mSensorManager;
     private JCVideoPlayer.JCAutoFullscreenListener mSensorEventListener;
     private int mProgress;
-    private int mPosition;
-    private String mChannelCode;
 
     @Override
     public void initView() {
         super.initView();
         UltimateBar ultimateBar = new UltimateBar(this);
-        ultimateBar.setColorBarForDrawer(ContextCompat.getColor(this, R.color.black));
+        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
     @Override

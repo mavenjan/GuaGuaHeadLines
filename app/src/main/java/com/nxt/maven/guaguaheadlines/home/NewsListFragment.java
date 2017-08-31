@@ -277,7 +277,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
         mNewsList.addAll(0, newList);
         mNewsAdapter.notifyDataSetChanged();
 
-        mTipView.show(tipInfo);
+        mTipView.show("呱呱头条" + tipInfo.split("今日头条")[1]);
 
         //保存到数据库
         NewsRecordHelper.save(mChannelCode, mGson.toJson(newList));
@@ -445,7 +445,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
         News news = mNewsList.get(position);
         news.comment_count = commentCount;
 
-        if (news.video_detail_info != null){
+        if (news.video_detail_info != null) {
             //如果有视频
             int progress = event.getProgress();
             news.video_detail_info.progress = progress;

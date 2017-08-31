@@ -18,7 +18,6 @@ import com.nxt.maven.guaguaheadlines.guide.adapter.ScenePagerAdapter;
 import com.nxt.maven.guaguaheadlines.guide.adapter.SceneTransformer;
 import com.nxt.maven.guaguaheadlines.guide.adapter.TextPagerAdapter;
 import com.nxt.maven.guaguaheadlines.home.MainActivity;
-import com.nxt.maven.guaguaheadlines.ui.MainActivity1;
 import com.nxt.maven.guaguaheadlines.utils.SharePrefHelper;
 
 import org.zackratos.ultimatebar.UltimateBar;
@@ -92,7 +91,6 @@ public class GuideActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharePrefHelper.put(Constant.FIRST_IN,false);
-//                startActivity(new Intent(GuideActivity.this, MainActivity1.class));
                 startActivity(new Intent(GuideActivity.this, MainActivity.class));
                 Toast.makeText(getApplicationContext(), "Start clicked", Toast.LENGTH_SHORT).show();
                 finish();
