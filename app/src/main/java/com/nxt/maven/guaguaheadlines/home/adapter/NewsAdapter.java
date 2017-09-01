@@ -72,7 +72,6 @@ public class NewsAdapter extends BaseQuickAdapter<News, BaseViewHolder> {
      */
     public NewsAdapter(Context context, String channelCode, boolean isVideoList, List<News> data) {
         super(data);
-        Log.e(TAG, "NewsAdapter: data----------->" + data);
         mContext = context;
         mChannelCode = channelCode;
         this.isVideoList = isVideoList;

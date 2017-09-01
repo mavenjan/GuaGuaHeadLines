@@ -91,7 +91,8 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelDr
 
     private void setDataType(List<Channel> datas, int type) {
         for (int i = 0; i < datas.size(); i++) {
-//            datas.get(i).setItemType(type);
+            datas.get(i).setItemType(type);
+            Log.e(TAG, "setDataType: type------------>" + datas.get(i));
         }
     }
 

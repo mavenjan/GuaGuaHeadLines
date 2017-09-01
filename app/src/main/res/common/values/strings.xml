@@ -13,7 +13,7 @@
     <string name="behavior_uc_title">com.nxt.maven.guaguaheadlines.home.behavior.uc.UcNewsTitleBehavior</string>
     <string name="behavior_uc_news_tab">com.nxt.maven.guaguaheadlines.home.behavior.uc.UcNewsTabBehavior</string>
 
-    <string name="exit_notice">再按一次，退出三农头条</string>
+    <string name="exit_notice">再按一次，退出呱呱头条</string>
 
     <string name="comment">评论</string>
     <string name="img_unit">图</string>

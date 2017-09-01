@@ -92,7 +92,7 @@ public class GuideActivity extends AppCompatActivity {
             public void onClick(View view) {
                 SharePrefHelper.put(Constant.FIRST_IN,false);
                 startActivity(new Intent(GuideActivity.this, MainActivity.class));
-                Toast.makeText(getApplicationContext(), "Start clicked", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Start clicked", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
