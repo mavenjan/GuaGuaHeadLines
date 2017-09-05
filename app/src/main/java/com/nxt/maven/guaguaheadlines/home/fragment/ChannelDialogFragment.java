@@ -1,4 +1,4 @@
-package com.nxt.maven.guaguaheadlines.home.view;
+package com.nxt.maven.guaguaheadlines.home.fragment;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -92,7 +92,6 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelDr
     private void setDataType(List<Channel> datas, int type) {
         for (int i = 0; i < datas.size(); i++) {
             datas.get(i).setItemType(type);
-            Log.e(TAG, "setDataType: type------------>" + datas.get(i));
         }
     }
 

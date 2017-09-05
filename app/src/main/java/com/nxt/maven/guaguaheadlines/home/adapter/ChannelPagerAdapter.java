@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 
-import com.nxt.maven.guaguaheadlines.home.NewsListFragment;
+import com.nxt.maven.guaguaheadlines.home.fragment.NewsListFragment;
 import com.nxt.maven.guaguaheadlines.model.entity.Channel;
 
 import java.util.ArrayList;

@@ -1,10 +1,12 @@
 package com.nxt.maven.guaguaheadlines.home.fragment;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -21,6 +23,7 @@ import com.google.gson.Gson;
 import com.nxt.maven.guaguaheadlines.R;
 import com.nxt.maven.guaguaheadlines.app.Constant;
 import com.nxt.maven.guaguaheadlines.base.BaseFragment;
+import com.nxt.maven.guaguaheadlines.home.MainActivity;
 import com.nxt.maven.guaguaheadlines.home.NewsDetailBaseActivity;
 import com.nxt.maven.guaguaheadlines.home.NewsDetailDetailActivity;
 import com.nxt.maven.guaguaheadlines.home.VideoDetailActivity;
@@ -219,6 +222,14 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
                 }
             });
         }
+    }
+
+    public static NewsListFragment newInstance(String code) {
+        NewsListFragment fragment = new NewsListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constant.CHANNEL_CODE, code);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
@@ -466,8 +477,21 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Log.e(TAG, "onResume: onResume------->" + "resume!!!");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause: onPause------->" + "pause!!!");
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
+        Log.e(TAG, "onPause: onStop------->" + "stop!!!");
         unregisterEventBus(NewsListFragment.this);
     }
 
