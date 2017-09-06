@@ -8,10 +8,10 @@
     <string name="follow_label">这些资讯都是你想要的</string>
     <string name="device_text">今天我去了新开的原原咖啡馆。因为今天是盛大的开幕，那里有很多人。最近，许多著名的夏威夷商店相继来到日本。我个人认为这些煎饼现在太热了。</string>
 
-    <string name="behavior_contents">com.nxt.maven.guaguaheadlines.home.behavior.uc.UcNewsContentBehavior</string>
-    <string name="behavior_uc_header_pager">com.nxt.maven.guaguaheadlines.home.behavior.uc.UcNewsHeaderPagerBehavior</string>
-    <string name="behavior_uc_title">com.nxt.maven.guaguaheadlines.home.behavior.uc.UcNewsTitleBehavior</string>
-    <string name="behavior_uc_news_tab">com.nxt.maven.guaguaheadlines.home.behavior.uc.UcNewsTabBehavior</string>
+    <string name="behavior_contents">com.nxt.maven.guaguaheadlines.behavior.uc.UcNewsContentBehavior</string>
+    <string name="behavior_uc_header_pager">com.nxt.maven.guaguaheadlines.behavior.uc.UcNewsHeaderPagerBehavior</string>
+    <string name="behavior_uc_title">com.nxt.maven.guaguaheadlines.behavior.uc.UcNewsTitleBehavior</string>
+    <string name="behavior_uc_news_tab">com.nxt.maven.guaguaheadlines.behavior.uc.UcNewsTabBehavior</string>
 
     <string name="exit_notice">再按一次，退出呱呱头条</string>
 

@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nxt.maven.guaguaheadlines.R;
-import com.nxt.maven.guaguaheadlines.model.entity.NewsDetail;
+import com.nxt.maven.guaguaheadlines.home.model.entity.NewsDetail;
 import com.nxt.maven.guaguaheadlines.relation.ShowPicRelation;
 import com.nxt.maven.guaguaheadlines.utils.DateUtils;
 import com.nxt.maven.guaguaheadlines.utils.GlideUtils;

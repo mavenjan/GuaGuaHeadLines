@@ -1,17 +1,15 @@
 package com.nxt.maven.guaguaheadlines.home.presenter;
 
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.nxt.maven.guaguaheadlines.base.BasePresenter;
-import com.nxt.maven.guaguaheadlines.model.entity.News;
-import com.nxt.maven.guaguaheadlines.model.entity.NewsData;
-import com.nxt.maven.guaguaheadlines.model.response.NewsResponse;
+import com.nxt.maven.guaguaheadlines.home.model.entity.News;
+import com.nxt.maven.guaguaheadlines.home.model.entity.NewsData;
+import com.nxt.maven.guaguaheadlines.home.model.response.NewsResponse;
 import com.nxt.maven.guaguaheadlines.utils.ListUtils;
 import com.nxt.maven.guaguaheadlines.utils.PreUtils;
 import com.socks.library.KLog;
-import com.nxt.maven.guaguaheadlines.view.NewsListView;
+import com.nxt.maven.guaguaheadlines.home.view.NewsListView;
 
 import java.util.ArrayList;
 import java.util.List;

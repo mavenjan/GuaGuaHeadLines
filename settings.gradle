@@ -1,1 +1,1 @@
-include ':app', ':uikit', ':jcvideoplayer-lib'
+include ':app', ':uikit', ':jcvideoplayer-lib', ':mjlibrary'

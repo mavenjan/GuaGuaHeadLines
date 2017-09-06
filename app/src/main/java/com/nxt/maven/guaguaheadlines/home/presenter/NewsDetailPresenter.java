@@ -3,9 +3,9 @@ package com.nxt.maven.guaguaheadlines.home.presenter;
 import com.nxt.maven.guaguaheadlines.api.SubscriberCallBack;
 import com.nxt.maven.guaguaheadlines.app.Constant;
 import com.nxt.maven.guaguaheadlines.base.BasePresenter;
-import com.nxt.maven.guaguaheadlines.model.entity.NewsDetail;
-import com.nxt.maven.guaguaheadlines.model.response.CommentResponse;
-import com.nxt.maven.guaguaheadlines.view.NewsDetailView;
+import com.nxt.maven.guaguaheadlines.home.model.entity.NewsDetail;
+import com.nxt.maven.guaguaheadlines.home.model.response.CommentResponse;
+import com.nxt.maven.guaguaheadlines.home.view.NewsDetailView;
 import com.socks.library.KLog;
 
 import rx.Subscriber;

@@ -6,7 +6,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.nxt.maven.guaguaheadlines.api.ApiRetrofit;
-import com.nxt.maven.guaguaheadlines.model.response.VideoPathResponse;
+import com.nxt.maven.guaguaheadlines.home.model.response.VideoPathResponse;
 import com.socks.library.KLog;
 
 import java.util.List;

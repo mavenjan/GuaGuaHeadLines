@@ -11,8 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.chaychan.lib.SlidingLayout;
 import com.github.nukc.stateview.StateView;
-import com.nxt.maven.guaguaheadlines.base.BasePresenter;
-import com.nxt.maven.guaguaheadlines.home.MainActivity;
+import com.nxt.maven.guaguaheadlines.home.ui.MainActivity;
 import com.nxt.maven.guaguaheadlines.listener.PermissionListener;
 
 import org.greenrobot.eventbus.EventBus;

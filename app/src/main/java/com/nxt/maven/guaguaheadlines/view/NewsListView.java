@@ -1,1 +1,0 @@
-package com.nxt.maven.guaguaheadlines.view;import com.nxt.maven.guaguaheadlines.model.entity.News;import java.util.List;/** * Created by Jan Maven on 2017/8/15. * Email:cyjiang_11@163.com * Description: 获取各种频道广告的View回调接口 */public interface NewsListView {    void onGetNewsListSuccess(List<News> newList, String tipInfo);    void onError();}

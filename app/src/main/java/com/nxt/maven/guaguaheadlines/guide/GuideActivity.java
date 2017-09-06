@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.nxt.maven.guaguaheadlines.R;
 import com.nxt.maven.guaguaheadlines.app.Constant;
@@ -17,7 +16,7 @@ import com.nxt.maven.guaguaheadlines.databinding.ActivityGuideBinding;
 import com.nxt.maven.guaguaheadlines.guide.adapter.ScenePagerAdapter;
 import com.nxt.maven.guaguaheadlines.guide.adapter.SceneTransformer;
 import com.nxt.maven.guaguaheadlines.guide.adapter.TextPagerAdapter;
-import com.nxt.maven.guaguaheadlines.home.MainActivity;
+import com.nxt.maven.guaguaheadlines.home.ui.MainActivity;
 import com.nxt.maven.guaguaheadlines.utils.SharePrefHelper;
 
 import org.zackratos.ultimatebar.UltimateBar;
@@ -25,7 +24,7 @@ import org.zackratos.ultimatebar.UltimateBar;
 /**
  * Created by Jan Maven on 2017/7/17.
  * Email:cyjiang_11@163.com
- * Description:
+ * Description: 引导页
  */
 
 public class GuideActivity extends AppCompatActivity {

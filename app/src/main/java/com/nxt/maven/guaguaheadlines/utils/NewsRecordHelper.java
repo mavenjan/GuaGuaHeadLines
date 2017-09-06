@@ -2,8 +2,8 @@ package com.nxt.maven.guaguaheadlines.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.nxt.maven.guaguaheadlines.model.entity.News;
-import com.nxt.maven.guaguaheadlines.model.entity.NewsRecord;
+import com.nxt.maven.guaguaheadlines.home.model.entity.News;
+import com.nxt.maven.guaguaheadlines.home.model.entity.NewsRecord;
 
 import org.litepal.crud.DataSupport;
 

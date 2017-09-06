@@ -3,7 +3,7 @@ package com.nxt.maven.guaguaheadlines.app;
 /**
  * Created by Jan Maven on 2017/8/14.
  * Email:cyjiang_11@163.com
- * Description: 记录常量的类
+ * Description: 常量类
  */
 
 public class Constant {
@@ -33,8 +33,6 @@ public class Constant {
     public static final String ARTICLE_GENRE_AD = "ad";
 
     public static final String TAG_MOVIE = "video_movie";
-
-    public static final String URL_VIDEO = "//urls/v/1/toutiao/mp4/%s?r=%s";
 
     /**
      * 获取评论列表每页的数目
