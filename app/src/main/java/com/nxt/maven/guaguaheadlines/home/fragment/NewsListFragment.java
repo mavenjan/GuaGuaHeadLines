@@ -148,6 +148,7 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
 
     @Override
     public void initListener() {
+//        http://is.snssdk.com/api/news/feed/v62/?refer=1&count=20&loc_mode=4&device_id=34960436458&iid=13136511752
         mNewsAdapter = new NewsAdapter(mActivity, mChannelCode, isVideoList, mNewsList);
         mRvNews.setAdapter(mNewsAdapter);
 
