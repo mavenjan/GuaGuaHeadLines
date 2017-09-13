@@ -2,7 +2,6 @@ package com.nxt.maven.guaguaheadlines.behavior.helper;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewCompat;

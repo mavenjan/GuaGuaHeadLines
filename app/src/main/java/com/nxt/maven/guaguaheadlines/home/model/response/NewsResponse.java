@@ -28,15 +28,15 @@ public class NewsResponse {
      * tips : {"display_info":"今日头条推荐引擎有15条更新","open_url":"","web_url":"","app_name":"今日头条","package_name":"","display_template":"今日头条推荐引擎有%s条更新","type":"app","display_duration":2,"download_url":""}
      */
 
-    public int login_status;
-    public int total_number;
-    public boolean has_more;
-    public String post_content_hint;
+    public int login_status;            //登录状态
+    public int total_number;            //总数
+    public boolean has_more;            //是否有更多(作用不明)
+    public String post_content_hint;    //描述
     public int show_et_status;
     public int feed_flag;
     public int action_to_last_stick;
-    public String message;
-    public boolean has_more_to_refresh;
+    public String message;              //success
+    public boolean has_more_to_refresh; //true
     public TipEntity tips;
     public List<NewsData> data;
 

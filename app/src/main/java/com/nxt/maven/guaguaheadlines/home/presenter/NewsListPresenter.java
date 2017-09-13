@@ -1,6 +1,8 @@
 package com.nxt.maven.guaguaheadlines.home.presenter;
 
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.nxt.maven.guaguaheadlines.base.BasePresenter;
 import com.nxt.maven.guaguaheadlines.home.model.entity.News;
@@ -38,7 +40,9 @@ public class NewsListPresenter extends BasePresenter<NewsListView> {
             //如果为空，则是从来没有刷新过，使用当前时间戳
             lastTime = System.currentTimeMillis() / 1000;
         }
-
+        Log.e(TAG, "getNewsList: channelCode------------->" + channelCode);
+        Log.e(TAG, "getNewsList: lastTime------------->" + lastTime);
+        Log.e(TAG, "getNewsList: currentTimeMillis------------->" + System.currentTimeMillis() / 1000);
         addSubscription(mApiService.getNewsList(channelCode, lastTime, System.currentTimeMillis() / 1000), new Subscriber<NewsResponse>() {
             @Override
             public void onCompleted() {

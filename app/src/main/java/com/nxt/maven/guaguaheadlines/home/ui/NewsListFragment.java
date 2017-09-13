@@ -24,6 +24,7 @@ import com.nxt.maven.guaguaheadlines.R;
 import com.nxt.maven.guaguaheadlines.adapter.NewsAdapter;
 import com.nxt.maven.guaguaheadlines.app.Constant;
 import com.nxt.maven.guaguaheadlines.base.BaseFragment;
+import com.nxt.maven.guaguaheadlines.base.NewsDetailBaseActivity;
 import com.nxt.maven.guaguaheadlines.home.presenter.NewsListPresenter;
 import com.nxt.maven.guaguaheadlines.home.model.entity.News;
 import com.nxt.maven.guaguaheadlines.home.model.entity.NewsRecord;
@@ -475,19 +476,16 @@ public class NewsListFragment extends BaseFragment<NewsListPresenter> implements
     @Override
     public void onResume() {
         super.onResume();
-        Log.e(TAG, "onResume: onResume------->" + "resume!!!");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.e(TAG, "onPause: onPause------->" + "pause!!!");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.e(TAG, "onPause: onStop------->" + "stop!!!");
         unregisterEventBus(NewsListFragment.this);
     }
 

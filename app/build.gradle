@@ -104,4 +104,5 @@ dependencies {
     //md
     compile project(':uikit')
     compile project(path: ':jcvideoplayer-lib')
+    compile project(path: ':mjlibrary')
 }

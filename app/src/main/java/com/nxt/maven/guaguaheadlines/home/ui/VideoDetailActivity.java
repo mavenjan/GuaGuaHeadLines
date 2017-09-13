@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.widget.ImageView;
 
 import com.nxt.maven.guaguaheadlines.R;
+import com.nxt.maven.guaguaheadlines.base.NewsDetailBaseActivity;
 import com.nxt.maven.guaguaheadlines.home.view.NewsDetailHeaderView;
 import com.nxt.maven.guaguaheadlines.home.model.entity.NewsDetail;
 import com.nxt.maven.guaguaheadlines.utils.VideoPathDecoder;
