@@ -13,6 +13,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.cauc.mavenj.utils.NetWorkUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.uikit.TipView;
@@ -32,7 +33,6 @@ import com.nxt.maven.guaguaheadlines.home.model.event.DetailCloseEvent;
 import com.nxt.maven.guaguaheadlines.home.model.event.TabRefreshCompletedEvent;
 import com.nxt.maven.guaguaheadlines.home.model.event.TabRefreshEvent;
 import com.nxt.maven.guaguaheadlines.utils.ListUtils;
-import com.nxt.maven.guaguaheadlines.utils.NetWorkUtils;
 import com.nxt.maven.guaguaheadlines.utils.NewsRecordHelper;
 import com.nxt.maven.guaguaheadlines.utils.UIUtils;
 import com.nxt.maven.guaguaheadlines.home.view.NewsListView;

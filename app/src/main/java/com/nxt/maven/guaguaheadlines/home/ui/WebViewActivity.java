@@ -42,6 +42,8 @@ public class WebViewActivity extends MBaseActivity {
     @BindView(R.id.wv_content)
     WebView mWvContent;
 
+    private String url;
+
     @Override
     protected BasePresenter createPresenter() {
         return null;
@@ -60,17 +62,16 @@ public class WebViewActivity extends MBaseActivity {
 
     @Override
     public void initData() {
-        String url = getIntent().getStringExtra(URL);
+        url = getIntent().getStringExtra(URL);
         mWvContent.loadUrl(url);
     }
 
     @Override
     public void initListener() {
-        WebSettings settings = mWvContent.getSettings();
-        settings.setJavaScriptEnabled(true);
+        WebSettings mWebSettings = mWvContent.getSettings();
+        mWebSettings.setJavaScriptEnabled(true);
 
-
-        mWvContent.setWebViewClient(new WebViewClient(){
+        mWvContent.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 mPbLoading.setVisibility(View.VISIBLE);
@@ -82,7 +83,7 @@ public class WebViewActivity extends MBaseActivity {
             }
         });
 
-        mWvContent.setWebChromeClient(new WebChromeClient(){
+        mWvContent.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 mPbLoading.setProgress(newProgress);

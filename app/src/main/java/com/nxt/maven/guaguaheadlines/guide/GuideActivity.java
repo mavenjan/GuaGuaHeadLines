@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.cauc.mavenj.utils.SharePrefHelper;
 import com.nxt.maven.guaguaheadlines.R;
 import com.nxt.maven.guaguaheadlines.app.Constant;
 import com.nxt.maven.guaguaheadlines.databinding.ActivityGuideBinding;
@@ -17,7 +18,6 @@ import com.nxt.maven.guaguaheadlines.guide.adapter.ScenePagerAdapter;
 import com.nxt.maven.guaguaheadlines.guide.adapter.SceneTransformer;
 import com.nxt.maven.guaguaheadlines.guide.adapter.TextPagerAdapter;
 import com.nxt.maven.guaguaheadlines.home.ui.MainActivity;
-import com.nxt.maven.guaguaheadlines.utils.SharePrefHelper;
 
 import org.zackratos.ultimatebar.UltimateBar;
 

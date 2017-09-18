@@ -30,24 +30,6 @@ import java.util.regex.Pattern;
 public class CommonUtils {
 
     /**
-     * 检测网络是否可用
-     *
-     * @param context 上下文对象
-     * @return boolean
-     */
-    public static boolean isNetWorkConnected(Context context) {
-        if (context != null) {
-            ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
-            if (mNetworkInfo != null) {
-                return mNetworkInfo.isAvailable();
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * 检测Sdcard是否存在
      *
      * @return boolean

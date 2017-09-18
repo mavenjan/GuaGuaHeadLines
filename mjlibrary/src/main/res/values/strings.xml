@@ -7,6 +7,7 @@
     <string name="home_page">主页</string>
     <string name="default_loading">Loading…</string>
 
+    <string name="net_error">网络错误</string>
     <string name="is_newest_version">已经是最新版本</string>
     <string name="update_notice">更新提示</string>
     <string name="ignose">忽略</string>

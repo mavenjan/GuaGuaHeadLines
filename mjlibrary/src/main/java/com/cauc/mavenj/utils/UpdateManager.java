@@ -3,24 +3,28 @@ package com.cauc.mavenj.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Environment;
-import android.telecom.Call;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.cauc.mavenj.app.Constant;
+import com.cauc.mavenj.callback.JsonCallback;
+import com.cauc.mavenj.model.CheckUpdateInfo;
+import com.cauc.mavenj.model.LzyResponse;
 import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.nxt.zyl.R;
-import com.qiangxi.checkupdatelibrary.bean.CheckUpdateInfo;
 import com.qiangxi.checkupdatelibrary.dialog.ForceUpdateDialog;
+
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import okhttp3.Call;
+import okhttp3.Headers;
 
 /**
  * Created by Maven on 2017/4/10.
@@ -30,94 +34,116 @@ import com.qiangxi.checkupdatelibrary.dialog.ForceUpdateDialog;
 
 public class UpdateManager {
     private static final String TAG = "UpdateManager";
-    private Context mcontext;
-    private boolean isnet;
-    AlertDialog updatedialog;
-    private String updatecontent;
-    private int opreate = 0;//0监测 1更新
-    private int versioncode;
-    private boolean isauto;
+    private static Context mContext;
+    private static String updatecontent;
+    private static int opreate = 0;//0监测 1更新
+    private static int versioncode;
+    private static boolean isauto;
 
-    private ForceUpdateDialog mForceUpdateDialog;
-    private CheckUpdateInfo mCheckUpdateInfo;
+    private static ForceUpdateDialog mForceUpdateDialog;
+    private static CheckUpdateInfo mCheckUpdateInfo;
 
 
     public UpdateManager(Context context, boolean auto) {
-        this.mcontext = context;
+        this.mContext = context;
         this.isauto = auto;
     }
 
     public void checkUpdate() {
-        isnet = CommonUtils.isNetWorkConnected(mcontext);
-        if (isnet) {
-            opreate = 0;
-
-            final int code = new PackageUtils(mcontext).getVersionCode();
-
-            OkGo.get(Constant.APP_VERSION_URL)
-                    .tag(this)
-                    .execute(new StringCallback() {
-                        @Override
-                        public void onSuccess(String s, Call call, Response response) {
-                            Log.e(TAG, "onSuccess: result----------->" + s);
-                            mCheckUpdateInfo = new Gson().fromJson(s, new TypeToken<CheckUpdateInfo>() {
-                            }.getType());
-                            if (mCheckUpdateInfo.getVersionCode() > code) {
-                                //老版本的更新dialog
-//                                updatecontent = mCheckUpdateInfo.getAppUpdateDesc();
-//                                getDialog().show();
-                                showForceUpdateDialog(mCheckUpdateInfo);
-                            } else {
-                                if (!isauto)
-                                    ZToastUtil.showShort(mcontext, R.string.is_newest_version);
-                            }
+        opreate = 0;
+        final int code = new PackageUtils(mContext).getVersionCode();
+        OkGo.<LzyResponse<CheckUpdateInfo>>get(Constant.APP_VERSION_URL)
+                .tag(mContext)
+                .headers("header1", "headerValue1")//
+                .params("param1", "paramValue1")//
+                .execute(new JsonCallback<LzyResponse<CheckUpdateInfo>>() {
+                    @Override
+                    public void onSuccess(Response<LzyResponse<CheckUpdateInfo>> response) {
+                        handleResponse(response);
+                        mCheckUpdateInfo = response.body().data;
+                        Log.e(TAG, "onSuccess: versionCode------>" + mCheckUpdateInfo.getVersionCode());
+                        Log.e(TAG, "onSuccess: versionCode------>" + code);
+                        if (mCheckUpdateInfo.getVersionCode() > code) {
+                            //老版本的更新dialog
+                            updatecontent = mCheckUpdateInfo.getAppUpdateDesc();
+//                            showForceUpdateDialog(mCheckUpdateInfo);
+                        } else {
+                            MToastUtil.showShort(mContext, R.string.is_newest_version);
                         }
-                    });
-        } else {
-            ZToastUtil.showShort(mcontext, R.string.net_error);
-        }
+                    }
+                });
+
     }
 
     /**
      * 强制更新,checkupdatelibrary中提供的默认强制更新Dialog,您完全可以自定义自己的Dialog,
      */
-    public void showForceUpdateDialog(CheckUpdateInfo mCheckUpdateInfo) {
-        mForceUpdateDialog = new ForceUpdateDialog(mcontext);
+    public synchronized ForceUpdateDialog showForceUpdateDialog(CheckUpdateInfo mCheckUpdateInfo) {
+        mForceUpdateDialog = new ForceUpdateDialog(mContext);
         mForceUpdateDialog.setAppSize(mCheckUpdateInfo.getAppSize())
                 .setDownloadUrl(Constant.APP_DOWNLOAD_URL)
                 .setTitle(mCheckUpdateInfo.getAppName() + "有更新啦")
                 .setReleaseTime(mCheckUpdateInfo.getAppReleaseTime())
                 .setVersionName(mCheckUpdateInfo.getAppVersionName())
                 .setUpdateDesc(mCheckUpdateInfo.getAppUpdateDesc())
-                .setFileName("地情直报.apk")
+                .setFileName("呱呱头条.apk")
                 .setFilePath(Environment.getExternalStorageDirectory().getPath() + "/checkupdatelib").show();
+        return mForceUpdateDialog;
     }
 
-    //老版本更新方法，弃用
-    public synchronized AlertDialog getDialog() {
-        updatedialog = new AlertDialog.Builder(mcontext).create();
-        View updateview = LayoutInflater.from(mcontext).inflate(R.layout.layout_update_dialog, null);
-        updateview.findViewById(R.id.tv_title).setBackgroundColor(mcontext.getResources().getColor(R.color.colorPrimary));
-        updatedialog.setView(updateview);
-        TextView contentview = (TextView) updateview.findViewById(R.id.tv_dialog_content);
+    protected static <T> void handleResponse(Response<T> response) {
+        StringBuilder sb;
+        Call call = response.getRawCall();
+        if (call != null) {
+            Headers requestHeadersString = call.request().headers();
+            Set<String> requestNames = requestHeadersString.names();
+            sb = new StringBuilder();
+            for (String name : requestNames) {
+                sb.append(name).append(" ： ").append(requestHeadersString.get(name)).append("\n");
+            }
+        }
+        T body = response.body();
+        Log.e(TAG, "handleResponse: body----------->" + body);
+        if (body == null) {
 
-        if (!TextUtils.isEmpty(updatecontent)) contentview.setText(updatecontent);
-        updateview.findViewById(R.id.tv_ignose).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updatedialog.dismiss();
-                // ZPreferenceUtils.setPrefBoolean(Constant.);
+        } else {
+            if (body instanceof String) {
+            } else if (body instanceof List) {
+                sb = new StringBuilder();
+                List list = (List) body;
+                for (Object obj : list) {
+                    sb.append(obj.toString()).append("\n");
+                }
+            } else if (body instanceof Set) {
+                sb = new StringBuilder();
+                Set set = (Set) body;
+                for (Object obj : set) {
+                    sb.append(obj.toString()).append("\n");
+                }
+            } else if (body instanceof Map) {
+                sb = new StringBuilder();
+                Map map = (Map) body;
+                Set keySet = map.keySet();
+                for (Object key : keySet) {
+                    sb.append(key.toString()).append(" ： ").append(map.get(key)).append("\n");
+                }
+            } else if (body instanceof File) {
+                File file = (File) body;
+            } else if (body instanceof Bitmap) {
+            } else {
             }
-        });
-        updateview.findViewById(R.id.tv_update).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updatedialog.dismiss();
-                Uri uri = Uri.parse(Constant.APP_DOWNLOAD_URL);
-                Intent web = new Intent(Intent.ACTION_VIEW, uri);
-                mcontext.startActivity(web);
+        }
+
+        okhttp3.Response rawResponse = response.getRawResponse();
+        if (rawResponse != null) {
+            Headers responseHeadersString = rawResponse.headers();
+            Set<String> names = responseHeadersString.names();
+            sb = new StringBuilder();
+            sb.append("url ： ").append(rawResponse.request().url()).append("\n\n");
+            sb.append("stateCode ： ").append(rawResponse.code()).append("\n");
+            for (String name : names) {
+                sb.append(name).append(" ： ").append(responseHeadersString.get(name)).append("\n");
             }
-        });
-        return updatedialog;
+        }
     }
 }

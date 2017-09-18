@@ -16,6 +16,7 @@
 package com.chaychan.uikit.refreshlayout.adapters;
 
 import android.databinding.BindingAdapter;
+
 import com.chaychan.uikit.refreshlayout.BGARefreshLayout;
 
 /**

@@ -3,6 +3,7 @@ package com.nxt.maven.guaguaheadlines.home.view;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
@@ -10,11 +11,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.cauc.mavenj.utils.DateUtils;
 import com.nxt.maven.guaguaheadlines.R;
 import com.nxt.maven.guaguaheadlines.home.model.entity.NewsDetail;
 import com.nxt.maven.guaguaheadlines.relation.ShowPicRelation;
-import com.nxt.maven.guaguaheadlines.utils.DateUtils;
 import com.nxt.maven.guaguaheadlines.utils.GlideUtils;
+import com.nxt.maven.guaguaheadlines.utils.TimeUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,8 +29,9 @@ import butterknife.ButterKnife;
 
 
 public class NewsDetailHeaderView extends FrameLayout {
+    private static final String TAG = "NewsDetailHeaderView";
 
-    private static final String NICK = "Maven Jan";
+    private static final String NICK = "mavenjan";
 
     @BindView(R.id.tvTitle)
     TextView mTvTitle;
@@ -82,7 +85,7 @@ public class NewsDetailHeaderView extends FrameLayout {
                 GlideUtils.loadRound(mContext, detail.media_user.avatar_url, mIvAvatar);
             }
             mTvAuthor.setText(detail.media_user.screen_name);
-            mTvTime.setText(DateUtils.getShortTime(detail.publish_time * 1000L));
+            mTvTime.setText(TimeUtils.getShortTime(detail.publish_time * 1000L));
         }
 
         if (TextUtils.isEmpty(detail.content))
@@ -125,11 +128,12 @@ public class NewsDetailHeaderView extends FrameLayout {
                 "var img = imgs[i];"+
                 "imgList = imgList + img.src +\";\";"+
                 "img.onclick = function(){"+
-                "window.chaychan.openImg(this.src);"+
+                "window.mavenjan.openImg(this.src);"+
                 "}"+
                 "}"+
-                "window.chaychan.getImgArray(imgList);"+
+                "window.mavenjan.getImgArray(imgList);"+
                 "})()");
+        Log.e(TAG, "addJs: " + "点击图片" );
     }
 
     private LoadWebListener mWebListener;

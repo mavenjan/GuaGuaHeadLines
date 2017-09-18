@@ -1,1 +1,0 @@
-package com.nxt.maven.guaguaheadlines.listener;import java.util.List;/** * Created by Jan Maven on 2017/8/28. * Email:cyjiang_11@163.com * Description: 权限申请回调的接口 */public interface PermissionListener {    void onGranted();    void onDenied(List<String> deniedPermissions);}
