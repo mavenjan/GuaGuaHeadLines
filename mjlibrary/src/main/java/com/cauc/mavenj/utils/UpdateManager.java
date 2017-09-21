@@ -1,24 +1,29 @@
 package com.cauc.mavenj.utils;
 
 
-import android.app.AlertDialog;
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.cauc.mavenj.R;
 import com.cauc.mavenj.app.Constant;
 import com.cauc.mavenj.callback.JsonCallback;
+import com.cauc.mavenj.dialog.ForceUpdateDialog;
+import com.cauc.mavenj.listener.PermissionListener;
 import com.cauc.mavenj.model.CheckUpdateInfo;
 import com.cauc.mavenj.model.LzyResponse;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
-import com.nxt.zyl.R;
-import com.qiangxi.checkupdatelibrary.dialog.ForceUpdateDialog;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -43,6 +48,9 @@ public class UpdateManager {
     private static ForceUpdateDialog mForceUpdateDialog;
     private static CheckUpdateInfo mCheckUpdateInfo;
 
+    public UpdateManager(Context context) {
+        this.mContext = context;
+    }
 
     public UpdateManager(Context context, boolean auto) {
         this.mContext = context;
@@ -51,7 +59,7 @@ public class UpdateManager {
 
     public void checkUpdate() {
         opreate = 0;
-        final int code = new PackageUtils(mContext).getVersionCode();
+        final int code = ApplicationUtil.getVersionCode(mContext);
         OkGo.<LzyResponse<CheckUpdateInfo>>get(Constant.APP_VERSION_URL)
                 .tag(mContext)
                 .headers("header1", "headerValue1")//
@@ -66,9 +74,9 @@ public class UpdateManager {
                         if (mCheckUpdateInfo.getVersionCode() > code) {
                             //老版本的更新dialog
                             updatecontent = mCheckUpdateInfo.getAppUpdateDesc();
-//                            showForceUpdateDialog(mCheckUpdateInfo);
+                            showForceUpdateDialog(mCheckUpdateInfo);
                         } else {
-                            MToastUtil.showShort(mContext, R.string.is_newest_version);
+//                            MToastUtil.showShort(mContext, R.string.is_newest_version);
                         }
                     }
                 });
@@ -144,6 +152,12 @@ public class UpdateManager {
             for (String name : names) {
                 sb.append(name).append(" ： ").append(responseHeadersString.get(name)).append("\n");
             }
+        }
+    }
+
+    public void download() {
+        if (mForceUpdateDialog != null) {
+            mForceUpdateDialog.download();
         }
     }
 }

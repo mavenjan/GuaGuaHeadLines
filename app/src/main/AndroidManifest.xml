@@ -23,6 +23,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <service android:name="com.cauc.mavenj.service.DownloadService"/>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.nxt.maven.guaguaheadlines"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/checkupdatelibrary_uri_grant"/>
+        </provider>
 
         <activity android:name=".guide.GuideActivity"/>
         <activity android:name=".home.ui.MainActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|screenSize|orientation" android:launchMode="singleTop" android:theme="@style/AppTheme.NoActionBar.Translucent" />

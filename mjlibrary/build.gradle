@@ -27,7 +27,6 @@ dependencies {
 
     //tool
     compile rootProject.ext.dependencies["klog"]
-    compile rootProject.ext.dependencies["update"]
 
     //network
     compile rootProject.ext.dependencies["gson"]
